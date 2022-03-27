@@ -33,7 +33,7 @@ export class SimpleParser extends DefaultSimpleParser<DicePool> {
             'hsenbt+dw',
             letterToRolls,
             dicePoolMonoid,
-            ['hero', 'superior', 'enhanced', 'normal', 'bad', 'terrible', 'superiorDefense', 'defense', 'wounds'],
+            ['hero', 'superior', 'enhanced', 'normal', 'bad', 'terrible', 'superior defense', 'defense', 'wounds'],
         );
     }
 }

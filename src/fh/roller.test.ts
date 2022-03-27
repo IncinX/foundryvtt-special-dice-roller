@@ -1,23 +1,23 @@
-/*
 import {makeRng} from '../rng';
-import {Roll} from '../roller';
-import {Dice, DicePool, Faces, interpretResult} from './dice';
+//import {Roll} from '../roller';
+//import {Dice, DicePool, Faces, interpretResult} from './dice';
+import {Dice, DicePool, Faces} from './dice';
 import {FHRoller} from './roller';
 
-test('should react to l5r command', () => {
-    const roller = new L5RRoller(makeRng(0), 'l5r');
-    expect(roller.handlesCommand('/l5r ')).toBe(true);
+test('should react to fh command', () => {
+    const roller = new FHRoller(makeRng(0), 'fh');
+    expect(roller.handlesCommand('/fh ')).toBe(true);
 });
 
-test('should roll a ring 1', () => {
-    const roller = new L5RRoller(makeRng(0), '');
-    const result = roller.roll(new DicePool(1, 0));
+test('should roll a hero 1', () => {
+    const roller = new FHRoller(makeRng(0), '');
+    const result = roller.roll(new DicePool(1, 0, 0, 0, 0, 0, 0, 0, 0));
 
     expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.RING);
-    expect(result[0].face).toBe(Faces.FAILURE);
+    expect(result[0].die).toBe(Dice.HERO);
+    expect(result[0].face).toBe(Faces.SUCCESS);
 });
-
+/*
 test('should roll a ring 2', () => {
     const roller = new L5RRoller(makeRng(1), '');
     const result = roller.roll(new DicePool(1, 0));

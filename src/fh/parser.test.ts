@@ -1,14 +1,14 @@
-/*
+
 import {parseFormula} from '../parser';
 import {SimpleParser} from './parser';
 
 const parsers = [new SimpleParser()];
 
 test('it should fail to parse a roll formula', () => {
-    const msg = 'Incorrect roll formula 1dx + 4ds! Usage: Any combination of the following letters: r, b, w, s (r = ring, b = ring, w = skill, s = skill). To roll multiple dice simply add multiple letters or prepend a number, e.g.: c3ba';
+    const msg = 'Incorrect roll formula 1dx + 4ds! Usage: Any combination of the following letters: h, s, e, n, b, t, +, d, w (h = hero, s = superior, e = enhanced, n = normal, b = bad, t = terrible, + = superior defense, d = defense, w = wounds). To roll multiple dice simply add multiple letters or prepend a number, e.g.: c3ba';
     expect(() => parseFormula('1dx + 4ds', parsers)).toThrow(msg);
 });
-
+/*
 test('it should parse a sky jedi roll formula', () => {
     const result = parseFormula('wwbbsrs', parsers);
     expect(result.rings).toBe(3);
