@@ -1,15 +1,16 @@
 import {makeRng} from '../rng';
-//import {Roll} from '../roller';
-//import {Dice, DicePool, Faces, interpretResult} from './dice';
-import {Dice, DicePool, Faces} from './dice';
+import {Roll} from '../roller';
+import {Dice, DicePool, Faces, interpretResult} from './dice';
 import {FHRoller} from './roller';
+
+// #todo Come up with a way to just roll all dice and test the distributions
 
 test('should react to fh command', () => {
     const roller = new FHRoller(makeRng(0), 'fh');
     expect(roller.handlesCommand('/fh ')).toBe(true);
 });
 
-test('should roll a hero 1', () => {
+test('should roll a hero success', () => {
     const roller = new FHRoller(makeRng(0), '');
     const result = roller.roll(new DicePool(1, 0, 0, 0, 0, 0, 0, 0, 0));
 
@@ -17,192 +18,63 @@ test('should roll a hero 1', () => {
     expect(result[0].die).toBe(Dice.HERO);
     expect(result[0].face).toBe(Faces.SUCCESS);
 });
-/*
-test('should roll a ring 2', () => {
-    const roller = new L5RRoller(makeRng(1), '');
-    const result = roller.roll(new DicePool(1, 0));
 
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.RING);
+test('should roll one of each dice with rng 0', () => {
+    const roller = new FHRoller(makeRng(...Array(9).fill(0)), '');
+    const result = roller.roll(new DicePool(...Array(9).fill(1)));
+
+    expect(result.length).toBe(9);
+
+    expect(result[0].die).toBe(Dice.HERO);
     expect(result[0].face).toBe(Faces.SUCCESS);
+
+    expect(result[1].die).toBe(Dice.SUPERIOR);
+    expect(result[1].face).toBe(Faces.BLANK);
+
+    expect(result[2].die).toBe(Dice.ENHANCED);
+    expect(result[2].face).toBe(Faces.BLANK);
+
+    expect(result[3].die).toBe(Dice.NORMAL);
+    expect(result[3].face).toBe(Faces.BLANK);
+
+    expect(result[4].die).toBe(Dice.BAD);
+    expect(result[4].face).toBe(Faces.CRITICAL_FAILURE);
+
+    expect(result[5].die).toBe(Dice.TERRIBLE);
+    expect(result[5].face).toBe(Faces.CRITICAL_FAILURE);
+
+    expect(result[6].die).toBe(Dice.SUPERIOR_DEFENSE);
+    expect(result[6].face).toBe(Faces.BLANK);
+
+    expect(result[7].die).toBe(Dice.DEFENSE);
+    expect(result[7].face).toBe(Faces.BLANK);
+
+    expect(result[8].die).toBe(Dice.WOUND);
+    expect(result[8].face).toBe(Faces.WOUND);
 });
 
-test('should roll a ring 3', () => {
-    const roller = new L5RRoller(makeRng(2), '');
-    const result = roller.roll(new DicePool(1, 0));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.RING);
-    expect(result[0].face).toBe(Faces.SUCCESS_STRIFE);
-});
-
-test('should roll a ring 4', () => {
-    const roller = new L5RRoller(makeRng(3, 2), '');
-    const result = roller.roll(new DicePool(1, 0));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.RING);
-    expect(result[0].face).toBe(Faces.EXPLODING_STRIFE);
-});
-
-test('should roll a ring 5', () => {
-    const roller = new L5RRoller(makeRng(4), '');
-    const result = roller.roll(new DicePool(1, 0));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.RING);
-    expect(result[0].face).toBe(Faces.OPPORTUNITY);
-});
-
-test('should roll a ring 6', () => {
-    const roller = new L5RRoller(makeRng(5), '');
-    const result = roller.roll(new DicePool(1, 0));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.RING);
-    expect(result[0].face).toBe(Faces.OPPORTUNITY_STRIFE);
-});
-
-test('should roll a ring 1 and skill 1', () => {
-    const roller = new L5RRoller(makeRng(0, 1), '');
-    const result = roller.roll(new DicePool(1, 1));
-
-    expect(result.length).toBe(2);
-    expect(result[0].die).toBe(Dice.RING);
-    expect(result[0].face).toBe(Faces.FAILURE);
-    expect(result[1].die).toBe(Dice.SKILL);
-    expect(result[1].face).toBe(Faces.FAILURE);
-});
-
-test('should roll a skill 1', () => {
-    const roller = new L5RRoller(makeRng(0), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.FAILURE);
-});
-
-test('should roll a skill 2', () => {
-    const roller = new L5RRoller(makeRng(1), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.FAILURE);
-});
-
-test('should roll a skill 3', () => {
-    const roller = new L5RRoller(makeRng(2), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.SUCCESS);
-});
-
-test('should roll a skill 4', () => {
-    const roller = new L5RRoller(makeRng(3), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.SUCCESS);
-});
-
-test('should roll a skill 5', () => {
-    const roller = new L5RRoller(makeRng(4), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.SUCCESS_OPPORTUNITY);
-});
-
-test('should roll a skill 6', () => {
-    const roller = new L5RRoller(makeRng(5), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.SUCCESS_STRIFE);
-});
-
-test('should roll a skill 7', () => {
-    const roller = new L5RRoller(makeRng(6), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.SUCCESS_STRIFE);
-});
-
-test('should roll a skill 8', () => {
-    const roller = new L5RRoller(makeRng(7, 9), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.EXPLODING);
-});
-
-test('should roll a skill 9', () => {
-    const roller = new L5RRoller(makeRng(8, 7, 9), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.EXPLODING_STRIFE);
-});
-
-test('should roll a skill 10', () => {
-    const roller = new L5RRoller(makeRng(9), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].face).toBe(Faces.OPPORTUNITY);
-});
-
-test('should roll a skill 11', () => {
-    const roller = new L5RRoller(makeRng(10), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.OPPORTUNITY);
-});
-
-test('should roll a skill 12', () => {
-    const roller = new L5RRoller(makeRng(11), '');
-    const result = roller.roll(new DicePool(0, 1));
-
-    expect(result.length).toBe(1);
-    expect(result[0].die).toBe(Dice.SKILL);
-    expect(result[0].face).toBe(Faces.OPPORTUNITY);
-});
+// #todo Dupe the above for different rolls
 
 test('should count results', () => {
-    const roller = new L5RRoller(makeRng(0, 2, 4, 5, 7, 0, 8, 0, 9), '');
-    const result = roller.roll(new DicePool(0, 7));
+    // Roll max on every die
+    const roller = new FHRoller(makeRng(5, 5, 5, 5, 0, 0, 5, 5, 0), '');
+    const result = roller.roll(new DicePool(1, 1, 1, 1, 1, 1, 1, 1, 1));
     const count = interpretResult(roller.combineRolls(result));
 
-    expect(count.exploding).toBe(2);
-    expect(count.strife).toBe(2);
-    expect(count.successes).toBe(5);
-    expect(count.failures).toBe(2);
-    expect(count.opportunity).toBe(1);
+    expect(count.successes).toBe(7);
+    expect(count.crits).toBe(3);
+    expect(count.wounds).toBe(1);
 });
 
 test('it should re-roll a result', () => {
-    const keptDice = [new Roll(Dice.RING, Faces.SUCCESS)];
-    const reRollDice = [new Roll(Dice.SKILL, Faces.OPPORTUNITY)];
-    const roller = new L5RRoller(makeRng(0), '');
+    const keptDice = [new Roll(Dice.SUPERIOR, Faces.DOUBLE_SUCCESS)];
+    const reRollDice = [new Roll(Dice.ENHANCED, Faces.BLANK)];
+    const roller = new FHRoller(makeRng(5), '');
     const result = roller.reRoll(keptDice, reRollDice);
 
     expect(result.length).toBe(2);
-    expect(result[0].die).toBe(Dice.RING);
-    expect(result[0].face).toBe(Faces.SUCCESS);
-    expect(result[1].die).toBe(Dice.SKILL);
-    expect(result[1].face).toBe(Faces.FAILURE);
+    expect(result[0].die).toBe(Dice.SUPERIOR);
+    expect(result[0].face).toBe(Faces.DOUBLE_SUCCESS);
+    expect(result[1].die).toBe(Dice.ENHANCED);
+    expect(result[1].face).toBe(Faces.CRITICAL_SUCCESS);
 });
-*/
