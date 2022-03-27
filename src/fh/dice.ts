@@ -10,8 +10,8 @@ export enum Dice {
     TERRIBLE,
     SUPERIOR_DEFENSE,
     DEFENSE,
-    WOUND,
     GUARANTEED_WOUND,
+    WOUND,
 }
 
 export enum Faces {
@@ -100,15 +100,6 @@ export const SUPERIOR_DEFENSE_ROLL_TABLE: Faces[] = [
     Faces.CRITICAL_DEFENSE,
 ];
 
-export const WOUND_ROLL_TABLE: Faces[] = [
-    Faces.WOUND,
-    Faces.WOUND,
-    Faces.WOUND,
-    Faces.BLANK,
-    Faces.BLANK,
-    Faces.BLANK,
-];
-
 export const GUARANTEED_WOUND_ROLL_TABLE: Faces[] = [
     Faces.WOUND,
     Faces.WOUND,
@@ -116,6 +107,15 @@ export const GUARANTEED_WOUND_ROLL_TABLE: Faces[] = [
     Faces.WOUND,
     Faces.WOUND,
     Faces.WOUND,
+];
+
+export const WOUND_ROLL_TABLE: Faces[] = [
+    Faces.WOUND,
+    Faces.WOUND,
+    Faces.WOUND,
+    Faces.BLANK,
+    Faces.BLANK,
+    Faces.BLANK,
 ];
 
 export class DicePool {
@@ -128,13 +128,13 @@ export class DicePool {
         public terrible: number = 0,
         public superiorDefense: number = 0,
         public defense: number = 0,
-        public wound: number = 0,
         public guaranteedWound: number = 0,
+        public wound: number = 0,
     ) {
     }
 
     public toString(): string {
-        return `hero: ${this.hero}, superior: ${this.superior}, enhanced: ${this.enhanced}, normal: ${this.normal}, bad: ${this.bad}, terrible: ${this.terrible}, superiorDefense: ${this.superiorDefense}, defense: ${this.defense}, wounds: ${this.wound}, guaranteedWounds: ${this.guaranteedWound}`;
+        return `hero: ${this.hero}, superior: ${this.superior}, enhanced: ${this.enhanced}, normal: ${this.normal}, bad: ${this.bad}, terrible: ${this.terrible}, superiorDefense: ${this.superiorDefense}, defense: ${this.defense}, guaranteedWounds: ${this.guaranteedWound}, wounds: ${this.wound}`;
     }
 }
 
@@ -215,14 +215,6 @@ superiorDefenseImages.set(Faces.DOUBLE_DEFENSE, 'superior-defense-successx2');
 superiorDefenseImages.set(Faces.CRITICAL_DEFENSE, 'superior-defense-crit');
 superiorDefenseImages.set(Faces.CRITICAL_DEFENSE, 'superior-defense-crit');
 
-const woundImages = new Map<Faces, string>();
-woundImages.set(Faces.WOUND, 'wound-wound');
-woundImages.set(Faces.WOUND, 'wound-wound');
-woundImages.set(Faces.WOUND, 'wound-wound');
-woundImages.set(Faces.BLANK, 'wound-blank');
-woundImages.set(Faces.BLANK, 'wound-blank');
-woundImages.set(Faces.BLANK, 'wound-blank');
-
 const guaranteedWoundImages = new Map<Faces, string>();
 guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
 guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
@@ -230,6 +222,14 @@ guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
 guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
 guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
 guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
+
+const woundImages = new Map<Faces, string>();
+woundImages.set(Faces.WOUND, 'wound-wound');
+woundImages.set(Faces.WOUND, 'wound-wound');
+woundImages.set(Faces.WOUND, 'wound-wound');
+woundImages.set(Faces.BLANK, 'wound-blank');
+woundImages.set(Faces.BLANK, 'wound-blank');
+woundImages.set(Faces.BLANK, 'wound-blank');
 
 export const dieRollImages = new Map<Dice, Map<Faces, string>>();
 dieRollImages.set(Dice.HERO, heroImages);
@@ -240,8 +240,8 @@ dieRollImages.set(Dice.BAD, badImages);
 dieRollImages.set(Dice.TERRIBLE, terribleImages);
 dieRollImages.set(Dice.DEFENSE, defenseImages);
 dieRollImages.set(Dice.SUPERIOR_DEFENSE, superiorDefenseImages);
-dieRollImages.set(Dice.WOUND, woundImages);
 dieRollImages.set(Dice.GUARANTEED_WOUND, guaranteedWoundImages);
+dieRollImages.set(Dice.WOUND, woundImages);
 
 const rollToRollResultMapping = new Map<Faces, Partial<RollValues>>();
 rollToRollResultMapping.set(Faces.CRITICAL_SUCCESS, {successes: 2, crits: 1});
@@ -297,7 +297,7 @@ export const dicePoolMonoid: IMonoid<DicePool> = {
         roll1.terrible + roll2.terrible,
         roll1.superiorDefense + roll2.superiorDefense,
         roll1.defense + roll2.defense,
-        roll1.wound + roll2.wound,
         roll1.guaranteedWound + roll2.guaranteedWound,
+        roll1.wound + roll2.wound,
     ),
 };

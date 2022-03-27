@@ -44,8 +44,8 @@ export class FHRoller extends Roller<Dice, Faces, DicePool> {
             ...rollDie(pool.terrible, Dice.TERRIBLE, TERRIBLE_ROLL_TABLE, this.rng),
             ...rollDie(pool.superiorDefense, Dice.SUPERIOR_DEFENSE, SUPERIOR_DEFENSE_ROLL_TABLE, this.rng),
             ...rollDie(pool.defense, Dice.DEFENSE, DEFENSE_ROLL_TABLE, this.rng),
-            ...rollDie(pool.wound, Dice.WOUND, WOUND_ROLL_TABLE, this.rng),
             ...rollDie(pool.guaranteedWound, Dice.GUARANTEED_WOUND, GUARANTEED_WOUND_ROLL_TABLE, this.rng),
+            ...rollDie(pool.wound, Dice.WOUND, WOUND_ROLL_TABLE, this.rng),
         ];
     }
 
@@ -87,9 +87,9 @@ export class FHRoller extends Roller<Dice, Faces, DicePool> {
         const terrible = countMatches(dice, (die) => die === Dice.TERRIBLE);
         const superiorDefense = countMatches(dice, (die) => die === Dice.SUPERIOR_DEFENSE);
         const defense = countMatches(dice, (die) => die === Dice.DEFENSE);
-        const wound = countMatches(dice, (die) => die === Dice.WOUND);
         const guaranteedWound = countMatches(dice, (die) => die === Dice.GUARANTEED_WOUND);
-        return new DicePool(hero, superior, enhanced, normal, bad, terrible, superiorDefense, defense, wound, guaranteedWound);
+        const wound = countMatches(dice, (die) => die === Dice.WOUND);
+        return new DicePool(hero, superior, enhanced, normal, bad, terrible, superiorDefense, defense, guaranteedWound, wound);
     }
 
 }

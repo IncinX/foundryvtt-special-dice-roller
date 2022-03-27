@@ -20,9 +20,9 @@ function letterToRolls(letter: string, occurrences: number): DicePool {
         return new DicePool(0, 0, 0, 0, 0, 0, occurrences, 0, 0, 0);
     } else if (letter === 'd') {
         return new DicePool(0, 0, 0, 0, 0, 0, 0, occurrences, 0, 0);
-    } else if (letter === 'w') {
-        return new DicePool(0, 0, 0, 0, 0, 0, 0, 0, occurrences, 0);
     } else if (letter === 'g') {
+        return new DicePool(0, 0, 0, 0, 0, 0, 0, 0, occurrences, 0);
+    } else if (letter === 'w') {
         return new DicePool(0, 0, 0, 0, 0, 0, 0, 0, 0, occurrences);
     } else {
         throw new Error(`Unknown letter ${letter}`);
@@ -32,10 +32,10 @@ function letterToRolls(letter: string, occurrences: number): DicePool {
 export class SimpleParser extends DefaultSimpleParser<DicePool> {
     constructor() {
         super(
-            'hsenbt+dwg',
+            'hsenbt+dgw',
             letterToRolls,
             dicePoolMonoid,
-            ['hero', 'superior', 'enhanced', 'normal', 'bad', 'terrible', 'superior defense', 'defense', 'wounds', 'guaranteed wound'],
+            ['hero', 'superior', 'enhanced', 'normal', 'bad', 'terrible', 'superior defense', 'defense', 'guaranteed wound', 'wound'],
         );
     }
 }
