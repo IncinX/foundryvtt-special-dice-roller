@@ -53,7 +53,177 @@ test('should roll one of each dice with rng 0', () => {
     expect(result[8].face).toBe(Faces.WOUND);
 });
 
-// #todo Dupe the above for different rolls
+test('should roll one of each dice with rng 1', () => {
+    const roller = new FHRoller(makeRng(...Array(9).fill(1)), '');
+    const result = roller.roll(new DicePool(...Array(9).fill(1)));
+
+    expect(result.length).toBe(9);
+
+    expect(result[0].die).toBe(Dice.HERO);
+    expect(result[0].face).toBe(Faces.SUCCESS);
+
+    expect(result[1].die).toBe(Dice.SUPERIOR);
+    expect(result[1].face).toBe(Faces.SUCCESS);
+
+    expect(result[2].die).toBe(Dice.ENHANCED);
+    expect(result[2].face).toBe(Faces.BLANK);
+
+    expect(result[3].die).toBe(Dice.NORMAL);
+    expect(result[3].face).toBe(Faces.BLANK);
+
+    expect(result[4].die).toBe(Dice.BAD);
+    expect(result[4].face).toBe(Faces.FAILURE);
+
+    expect(result[5].die).toBe(Dice.TERRIBLE);
+    expect(result[5].face).toBe(Faces.DOUBLE_FAILURE);
+
+    expect(result[6].die).toBe(Dice.SUPERIOR_DEFENSE);
+    expect(result[6].face).toBe(Faces.BLANK);
+
+    expect(result[7].die).toBe(Dice.DEFENSE);
+    expect(result[7].face).toBe(Faces.BLANK);
+
+    expect(result[8].die).toBe(Dice.WOUND);
+    expect(result[8].face).toBe(Faces.WOUND);
+});
+
+test('should roll one of each dice with rng 2', () => {
+    const roller = new FHRoller(makeRng(...Array(9).fill(2)), '');
+    const result = roller.roll(new DicePool(...Array(9).fill(1)));
+
+    expect(result.length).toBe(9);
+
+    expect(result[0].die).toBe(Dice.HERO);
+    expect(result[0].face).toBe(Faces.DOUBLE_SUCCESS);
+
+    expect(result[1].die).toBe(Dice.SUPERIOR);
+    expect(result[1].face).toBe(Faces.SUCCESS);
+
+    expect(result[2].die).toBe(Dice.ENHANCED);
+    expect(result[2].face).toBe(Faces.SUCCESS);
+
+    expect(result[3].die).toBe(Dice.NORMAL);
+    expect(result[3].face).toBe(Faces.BLANK);
+
+    expect(result[4].die).toBe(Dice.BAD);
+    expect(result[4].face).toBe(Faces.FAILURE);
+
+    expect(result[5].die).toBe(Dice.TERRIBLE);
+    expect(result[5].face).toBe(Faces.FAILURE);
+
+    expect(result[6].die).toBe(Dice.SUPERIOR_DEFENSE);
+    expect(result[6].face).toBe(Faces.DEFENSE);
+
+    expect(result[7].die).toBe(Dice.DEFENSE);
+    expect(result[7].face).toBe(Faces.DEFENSE);
+
+    expect(result[8].die).toBe(Dice.WOUND);
+    expect(result[8].face).toBe(Faces.WOUND);
+});
+
+test('should roll one of each dice with rng 3', () => {
+    const roller = new FHRoller(makeRng(...Array(9).fill(3)), '');
+    const result = roller.roll(new DicePool(...Array(9).fill(1)));
+
+    expect(result.length).toBe(9);
+
+    expect(result[0].die).toBe(Dice.HERO);
+    expect(result[0].face).toBe(Faces.DOUBLE_SUCCESS);
+
+    expect(result[1].die).toBe(Dice.SUPERIOR);
+    expect(result[1].face).toBe(Faces.SUCCESS);
+
+    expect(result[2].die).toBe(Dice.ENHANCED);
+    expect(result[2].face).toBe(Faces.SUCCESS);
+
+    expect(result[3].die).toBe(Dice.NORMAL);
+    expect(result[3].face).toBe(Faces.BLANK);
+
+    expect(result[4].die).toBe(Dice.BAD);
+    expect(result[4].face).toBe(Faces.FAILURE);
+
+    expect(result[5].die).toBe(Dice.TERRIBLE);
+    expect(result[5].face).toBe(Faces.FAILURE);
+
+    expect(result[6].die).toBe(Dice.SUPERIOR_DEFENSE);
+    expect(result[6].face).toBe(Faces.DOUBLE_DEFENSE);
+
+    expect(result[7].die).toBe(Dice.DEFENSE);
+    expect(result[7].face).toBe(Faces.DEFENSE);
+
+    expect(result[8].die).toBe(Dice.WOUND);
+    expect(result[8].face).toBe(Faces.BLANK);
+});
+
+test('should roll one of each dice with rng 4', () => {
+    const roller = new FHRoller(makeRng(...Array(9).fill(4)), '');
+    const result = roller.roll(new DicePool(...Array(9).fill(1)));
+
+    expect(result.length).toBe(9);
+
+    expect(result[0].die).toBe(Dice.HERO);
+    expect(result[0].face).toBe(Faces.CRITICAL_SUCCESS);
+
+    expect(result[1].die).toBe(Dice.SUPERIOR);
+    expect(result[1].face).toBe(Faces.DOUBLE_SUCCESS);
+
+    expect(result[2].die).toBe(Dice.ENHANCED);
+    expect(result[2].face).toBe(Faces.SUCCESS);
+
+    expect(result[3].die).toBe(Dice.NORMAL);
+    expect(result[3].face).toBe(Faces.SUCCESS);
+
+    expect(result[4].die).toBe(Dice.BAD);
+    expect(result[4].face).toBe(Faces.BLANK);
+
+    expect(result[5].die).toBe(Dice.TERRIBLE);
+    expect(result[5].face).toBe(Faces.FAILURE);
+
+    expect(result[6].die).toBe(Dice.SUPERIOR_DEFENSE);
+    expect(result[6].face).toBe(Faces.CRITICAL_DEFENSE);
+
+    expect(result[7].die).toBe(Dice.DEFENSE);
+    expect(result[7].face).toBe(Faces.DEFENSE);
+
+    expect(result[8].die).toBe(Dice.WOUND);
+    expect(result[8].face).toBe(Faces.BLANK);
+});
+
+test('should roll one of each dice with rng 5', () => {
+    const roller = new FHRoller(makeRng(...Array(9).fill(5)), '');
+    const result = roller.roll(new DicePool(...Array(9).fill(1)));
+
+    expect(result.length).toBe(9);
+
+    expect(result[0].die).toBe(Dice.HERO);
+    expect(result[0].face).toBe(Faces.CRITICAL_SUCCESS);
+
+    expect(result[1].die).toBe(Dice.SUPERIOR);
+    expect(result[1].face).toBe(Faces.CRITICAL_SUCCESS);
+
+    expect(result[2].die).toBe(Dice.ENHANCED);
+    expect(result[2].face).toBe(Faces.CRITICAL_SUCCESS);
+
+    expect(result[3].die).toBe(Dice.NORMAL);
+    expect(result[3].face).toBe(Faces.SUCCESS);
+
+    expect(result[4].die).toBe(Dice.BAD);
+    expect(result[4].face).toBe(Faces.BLANK);
+
+    expect(result[5].die).toBe(Dice.TERRIBLE);
+    expect(result[5].face).toBe(Faces.BLANK);
+
+    expect(result[6].die).toBe(Dice.SUPERIOR_DEFENSE);
+    expect(result[6].face).toBe(Faces.CRITICAL_DEFENSE);
+
+    expect(result[7].die).toBe(Dice.DEFENSE);
+    expect(result[7].face).toBe(Faces.CRITICAL_DEFENSE);
+
+    expect(result[8].die).toBe(Dice.WOUND);
+    expect(result[8].face).toBe(Faces.BLANK);
+});
+
+// #todo Dupe the above for different rolls 3,4,5
 
 test('should count results', () => {
     // Roll max on every die
