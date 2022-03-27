@@ -4,10 +4,24 @@ import {DicePool, dicePoolMonoid} from './dice';
 // #todo Add support for bonus dice like bcs1, bcs2, bs1, bs2 (which interprets bonus as b, dice type letter and number to add... even bw1 should work... 'c' is special as a meaning crit)
 
 function letterToRolls(letter: string, occurrences: number): DicePool {
-    if (letter === 'r' || letter === 'b') {
-        return new DicePool(occurrences, 0);
-    } else if (letter === 's' || letter === 'w') {
-        return new DicePool(0, occurrences);
+    if (letter === 'h') {
+        return new DicePool(occurrences, 0, 0, 0, 0, 0, 0, 0, 0);
+    } else if (letter === 's') {
+        return new DicePool(0, occurrences, 0, 0, 0, 0, 0, 0, 0);
+    } else if (letter === 'e') {
+        return new DicePool(0, 0, occurrences, 0, 0, 0, 0, 0, 0);
+    } else if (letter === 'n') {
+        return new DicePool(0, 0, 0, occurrences, 0, 0, 0, 0, 0);
+    } else if (letter === 'b') {
+        return new DicePool(0, 0, 0, 0, occurrences, 0, 0, 0, 0);
+    } else if (letter === 't') {
+        return new DicePool(0, 0, 0, 0, 0, occurrences, 0, 0, 0);
+    } else if (letter === 'D') {
+        return new DicePool(0, 0, 0, 0, 0, 0, occurrences, 0, 0);
+    } else if (letter === 'd') {
+        return new DicePool(0, 0, 0, 0, 0, 0, 0, occurrences, 0);
+    } else if (letter === 'w') {
+        return new DicePool(0, 0, 0, 0, 0, 0, 0, 0, occurrences);
     } else {
         throw new Error(`Unknown letter ${letter}`);
     }
@@ -16,10 +30,10 @@ function letterToRolls(letter: string, occurrences: number): DicePool {
 export class SimpleParser extends DefaultSimpleParser<DicePool> {
     constructor() {
         super(
-            'rbws',
+            'hsenbtDdw',
             letterToRolls,
             dicePoolMonoid,
-            ['ring', 'ring', 'skill', 'skill'],
+            ['hero', 'superior', 'enhanced', 'normal', 'bad', 'terrible', 'superiorDefense', 'defense', 'wounds'],
         );
     }
 }
