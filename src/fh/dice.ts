@@ -110,14 +110,20 @@ export const WOUND_ROLL_TABLE: Faces[] = [
 
 export class DicePool {
     constructor(
-        public successes: number = 0,
-        public crits: number = 0,
+        public hero: number = 0,
+        public superior: number = 0,
+        public enhanced: number = 0,
+        public normal: number = 0,
+        public bad: number = 0,
+        public terrible: number = 0,
+        public superiorDefense: number = 0,
+        public defense: number = 0,
         public wounds: number = 0,
     ) {
     }
 
     public toString(): string {
-        return `successes: ${this.successes}, crits: ${this.crits}`;
+        return `hero: ${this.hero}, superior: ${this.superior}, enhanced: ${this.enhanced}, normal: ${this.normal}, bad: ${this.bad}, terrible: ${this.terrible}, superiorDefense: ${this.superiorDefense}, defense: ${this.defense}, wounds: ${this.wounds}`;
     }
 }
 
@@ -127,6 +133,10 @@ export class RollValues {
         public crits: number = 0,
         public wounds: number = 0,
     ) {
+    }
+
+    public toString(): string {
+        return `successes: ${this.successes}, crits: ${this.crits}, wounds: ${this.wounds}`;
     }
 }
 
@@ -259,8 +269,14 @@ export const rollValuesMonoid: IMonoid<RollValues> = {
 export const dicePoolMonoid: IMonoid<DicePool> = {
     identity: new DicePool(),
     combine: (roll1: DicePool, roll2: DicePool) => new DicePool(
-        roll1.successes + roll2.successes,
-        roll1.crits + roll2.crits,
+        roll1.hero + roll2.hero,
+        roll1.superior + roll2.superior,
+        roll1.enhanced + roll2.enhanced,
+        roll1.normal + roll2.normal,
+        roll1.bad + roll2.bad,
+        roll1.terrible + roll2.terrible,
+        roll1.superiorDefense + roll2.superiorDefense,
+        roll1.defense + roll2.defense,
         roll1.wounds + roll2.wounds,
     ),
 };

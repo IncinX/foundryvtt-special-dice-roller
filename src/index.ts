@@ -9,6 +9,7 @@ import {V5Roller} from './v5/roller';
 import { warhammerRoller, WarhammerRoller } from './wfrp3/roller';
 import {Descent2Roller} from './desc2/roller';
 import {OVARoller, ovaRoller} from './ova/roller';
+import {FHRoller} from './fh/roller';
 
 // begin foundry types
 interface IHooks {
@@ -54,6 +55,7 @@ interface IExportedRollers {
     warhammer3: WarhammerRoller;
     desc2: Descent2Roller;
     ova: OVARoller;
+    fh: FHRoller;
 }
 
 const specialDiceRoller = {
@@ -67,6 +69,7 @@ const specialDiceRoller = {
     warhammer3: warhammerRoller(secureRandomNumber, 'wfrp3'),
     desc2: new Descent2Roller(secureRandomNumber, 'desc2'),
     ova: ovaRoller(secureRandomNumber, 'ova'),
+    fh: new FHRoller(secureRandomNumber, 'fh'),
 };
 
 Hooks.on('init', () => {
