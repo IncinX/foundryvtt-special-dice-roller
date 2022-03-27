@@ -10,6 +10,6 @@
   "minimumCoreVersion": "0.8.5",
   "compatibleCoreVersion": "0.9.2",
   "url": "https://github.com/IncinX/foundryvtt-special-dice-roller",
-  "manifest": "https://github.com/IncinX/foundryvtt-special-dice-roller/raw/master/module.json",
+  "manifest": "https://github.com/IncinX/foundryvtt-special-dice-roller/raw/0.16/module.json",
   "download": "https://github.com/IncinX/foundryvtt-special-dice-roller/archive/refs/tags/0.16.zip"
 }
