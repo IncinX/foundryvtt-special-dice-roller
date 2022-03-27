@@ -176,7 +176,19 @@ Use **/ova x** to roll *x* amount of dice. Use *0* or a negative number to roll 
 
 ## Usage Farhome
 
-Work In Progress
+Use **/fh** to roll dice using the following dice letters:
+
+* h: hero
+* s: superior
+* e: enhanced
+* n: normal
+* b: bad
+* t: terrible
+* +: superior defense
+* d: defense
+* w: wound
+
+![roller usage](docs/fh.png)
 
 # Building the Project
 
