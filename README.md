@@ -25,6 +25,8 @@ Warhammer 3rd images created by [Alex Valiushko](https://github.com/illotum)
 
 OVA images are used with permission from [Clay Gardner](https://blog.claygardner.com/)
 
+Farhome images are used with permission from [scrabbletank](https://github.com/scrabbletank)
+
 # Installation
 
 Go to your setup page and click on the **Add-on Modules** Tab.
@@ -50,6 +52,7 @@ You can roll a system by starting your message with the following string:
 * The One Ring: /tor
 * Descent: /desc2
 * OVA: /ova
+* Farhome: /fh
 
 Then supply a dice formula separated with a space. The formula consists of dice letters that are optionally prefixed with a number.
 
@@ -161,7 +164,7 @@ Use **/desc2** to roll dice using the following dice letters:
 
 ![roller usage](docs/desc2.png)
 
-# Usage OVA
+## Usage OVA
 
 Use **/ova x** to roll *x* amount of dice. Use *0* or a negative number to roll negative dice (result will be in red). You can click the result to expand to view the related die face. 
 
@@ -170,6 +173,10 @@ Use **/ova x** to roll *x* amount of dice. Use *0* or a negative number to roll 
 ![roller usage](docs/ova2.png)
 
 ![roller usage](docs/ova3.png)
+
+## Usage Farhome
+
+Work In Progress
 
 # Building the Project
 
@@ -213,6 +220,7 @@ game.specialDiceRoller.warhammer3
 game.specialDiceRoller.tor
 game.specialDiceRoller.desc2
 game.specialDiceRoller.ova
+game.specialDiceRoller.fh
 ```
 
 Each roller object has a rollFormula method:
