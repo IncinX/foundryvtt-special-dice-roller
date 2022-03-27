@@ -12,6 +12,7 @@ Supports rolling dice in your chat window for various non-regular dice systems:
 * The One Ring
 * Descent 2nd Edition
 * [OVA: The Anime Role-Playing Game](https://www.wiseturtle.com)
+* [Farhome](https://github.com/scrabbletank/farhome-rules)
 
 L5R, Genesys and Star Wars images are taken from [SkyJedi's Discord Roller](https://github.com/SkyJedi/FFGNDS-Discord-Dice-Roller)
 
