@@ -216,12 +216,12 @@ superiorDefenseImages.set(Faces.CRITICAL_DEFENSE, 'superior-defense-crit');
 superiorDefenseImages.set(Faces.CRITICAL_DEFENSE, 'superior-defense-crit');
 
 const guaranteedWoundImages = new Map<Faces, string>();
-guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
-guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
-guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
-guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
-guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
-guaranteedWoundImages.set(Faces.WOUND, 'wound-wound');
+guaranteedWoundImages.set(Faces.WOUND, 'guaranteed-wound-wound');
+guaranteedWoundImages.set(Faces.WOUND, 'guaranteed-wound-wound');
+guaranteedWoundImages.set(Faces.WOUND, 'guaranteed-wound-wound');
+guaranteedWoundImages.set(Faces.WOUND, 'guaranteed-wound-wound');
+guaranteedWoundImages.set(Faces.WOUND, 'guaranteed-wound-wound');
+guaranteedWoundImages.set(Faces.WOUND, 'guaranteed-wound-wound');
 
 const woundImages = new Map<Faces, string>();
 woundImages.set(Faces.WOUND, 'wound-wound');
