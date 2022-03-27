@@ -8,22 +8,30 @@ test('it should fail to parse a roll formula', () => {
     const msg = 'Incorrect roll formula 1dx + 4ds! Usage: Any combination of the following letters: h, s, e, n, b, t, +, d, w (h = hero, s = superior, e = enhanced, n = normal, b = bad, t = terrible, + = superior defense, d = defense, w = wounds). To roll multiple dice simply add multiple letters or prepend a number, e.g.: c3ba';
     expect(() => parseFormula('1dx + 4ds', parsers)).toThrow(msg);
 });
-/*
-test('it should parse a sky jedi roll formula', () => {
-    const result = parseFormula('wwbbsrs', parsers);
-    expect(result.rings).toBe(3);
-    expect(result.skills).toBe(4);
+
+test('it should parse a simple farhome roll formula with each die', () => {
+    const result = parseFormula('hsenbt+dw', parsers);
+    expect(result.hero).toBe(1);
+    expect(result.superior).toBe(1);
+    expect(result.enhanced).toBe(1);
+    expect(result.normal).toBe(1);
+    expect(result.bad).toBe(1);
+    expect(result.terrible).toBe(1);
+    expect(result.superiorDefense).toBe(1);
+    expect(result.defense).toBe(1);
+    expect(result.wounds).toBe(1);
 });
 
-test('it should parse a sky jedi with numbers roll formula', () => {
-    const result = parseFormula('ww3bbsrs', parsers);
-    expect(result.rings).toBe(5);
-    expect(result.skills).toBe(4);
+test('it should parse a farhome with repetition roll formula', () => {
+    const result = parseFormula('sssen', parsers);
+    expect(result.superior).toBe(3);
+    expect(result.enhanced).toBe(1);
+    expect(result.normal).toBe(1);
 });
 
-test('it should parse a sky jedi with numbers roll formula', () => {
-    const result = parseFormula('30ww3bbsrs', parsers);
-    expect(result.rings).toBe(5);
-    expect(result.skills).toBe(33);
+test('it should parse a farhome with numbers roll formula', () => {
+    const result = parseFormula('3s2e4w', parsers);
+    expect(result.superior).toBe(3);
+    expect(result.enhanced).toBe(2);
+    expect(result.wounds).toBe(4);
 });
-*/
