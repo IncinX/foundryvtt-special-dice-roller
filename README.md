@@ -187,6 +187,7 @@ Use **/fh** to roll dice using the following dice letters:
 * +: superior defense
 * d: defense
 * w: wound
+* g: guaranteed wound
 
 ![roller usage](docs/fh.png)
 

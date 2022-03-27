@@ -10,8 +10,8 @@ const tpl = `
     {{#wounds}}
     <li>Wounds: {{wounds}}</li>
     {{/wounds}}
-</ul>
 {{/results}}
+</ul>
 `;
 
 export default tpl;
