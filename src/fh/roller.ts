@@ -31,7 +31,7 @@ import tpl from './template';
 export class FHRoller extends Roller<Dice, Faces, DicePool> {
 
     constructor(private rng: RandomNumberGenerator, command: string) {
-        super(command, [new SimpleParser()], true, true);
+        super(command, [new SimpleParser()], true, false);
     }
 
     public roll(pool: DicePool): Roll<Dice, Faces>[] {
