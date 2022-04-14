@@ -48,7 +48,7 @@ test('should roll one of each dice with rng 0', () => {
 
     expect(result[7].die).toBe(Dice.DEFENSE);
     expect(result[7].face).toBe(Faces.BLANK);
-    
+
     expect(result[8].die).toBe(Dice.GUARANTEED_WOUND);
     expect(result[8].face).toBe(Faces.WOUND);
 
@@ -85,7 +85,7 @@ test('should roll one of each dice with rng 1', () => {
 
     expect(result[7].die).toBe(Dice.DEFENSE);
     expect(result[7].face).toBe(Faces.BLANK);
-    
+
     expect(result[8].die).toBe(Dice.GUARANTEED_WOUND);
     expect(result[8].face).toBe(Faces.WOUND);
 
@@ -122,7 +122,7 @@ test('should roll one of each dice with rng 2', () => {
 
     expect(result[7].die).toBe(Dice.DEFENSE);
     expect(result[7].face).toBe(Faces.DEFENSE);
-    
+
     expect(result[8].die).toBe(Dice.GUARANTEED_WOUND);
     expect(result[8].face).toBe(Faces.WOUND);
 
@@ -159,7 +159,7 @@ test('should roll one of each dice with rng 3', () => {
 
     expect(result[7].die).toBe(Dice.DEFENSE);
     expect(result[7].face).toBe(Faces.DEFENSE);
-    
+
     expect(result[8].die).toBe(Dice.GUARANTEED_WOUND);
     expect(result[8].face).toBe(Faces.WOUND);
 
@@ -196,7 +196,7 @@ test('should roll one of each dice with rng 4', () => {
 
     expect(result[7].die).toBe(Dice.DEFENSE);
     expect(result[7].face).toBe(Faces.DEFENSE);
-    
+
     expect(result[8].die).toBe(Dice.GUARANTEED_WOUND);
     expect(result[8].face).toBe(Faces.WOUND);
 
@@ -233,7 +233,7 @@ test('should roll one of each dice with rng 5', () => {
 
     expect(result[7].die).toBe(Dice.DEFENSE);
     expect(result[7].face).toBe(Faces.CRITICAL_DEFENSE);
-    
+
     expect(result[8].die).toBe(Dice.GUARANTEED_WOUND);
     expect(result[8].face).toBe(Faces.WOUND);
 
