@@ -109,7 +109,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: foundryvtt-special-dice-roller
-          path: .
+          path: dist
 
   publish:
     needs:
@@ -125,7 +125,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: foundryvtt-special-dice-roller
-          path: .
+          path: dist
 
       - name: Create zip file
         working-directory: ./dist
