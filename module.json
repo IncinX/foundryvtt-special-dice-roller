@@ -4,7 +4,7 @@
   "description": "Supports rolling dice for: Legend of the 5 Rings 5th edition, Genesys, Vampire the Masquerade 5th edition, FFG's Star Wars TTRPG, WFRP3, HeroQuest, HeXXen 1733, The One Ring, Descent 2nd Edition, OVA, Farhome. Check out the README.md on the homepage for a guide on how to roll various dice.",
   "version": "This is auto replaced",
   "author": "Bernhard Posselt, Thomas Perry (Farhome Modifications)",
-  "scripts": ["./dist/main.js"],
+  "scripts": ["./main.js"],
   "styles": ["./public/css/styles.css"],
   "packs": [],
   "minimumCoreVersion": "0.8.5",
